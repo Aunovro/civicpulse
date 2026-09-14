@@ -51,12 +51,12 @@ export default function HomeScreen() {
         
         <Button
           title="Click here to report problem"
-          onPress={() => router.push('/report')}
+          onPress={() => router.navigate('/report')}
         />
         <ThemedView type="backgroundElement" style={styles.stepContainer}>
           <HintRow
             title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
+            hint={<ThemedText type="code">/app/index.tsx</ThemedText>}
           />
           <HintRow title="Dev tools" hint={getDevMenuHint()} />
           <HintRow
