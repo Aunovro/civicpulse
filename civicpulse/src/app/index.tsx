@@ -11,7 +11,7 @@ import { Button } from 'react-native';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useRouter } from 'expo-router';
 
-//cd tab enter 
+//cd civicpulse/
 //npm run start 
 //press W in the terminal
 function getDevMenuHint() {
@@ -45,25 +45,12 @@ export default function HomeScreen() {
           </ThemedText>
         </ThemedView>
 
-        <ThemedText type="code" style={styles.code}>
-          Please report your incident
-        </ThemedText>
-        
-        <Button
-          title="Click here to report problem"
-          onPress={() => router.navigate('/report')}
-        />
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
+       <ThemedView>
+      <ThemedText>
+        call 911 if emergency
+      </ThemedText>
+
+       </ThemedView>
 
         {Platform.OS === 'web' && <WebBadge />}
       </SafeAreaView>
