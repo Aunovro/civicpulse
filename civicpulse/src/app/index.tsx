@@ -49,7 +49,10 @@ export default function HomeScreen() {
       <ThemedText>
         call 911 if emergency
       </ThemedText>
-
+      <Button
+        title="Report an Issue"
+        onPress={() => router.push('/report')}
+      />
        </ThemedView>
 
         {Platform.OS === 'web' && <WebBadge />}
