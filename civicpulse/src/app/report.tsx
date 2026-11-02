@@ -16,6 +16,9 @@ export default function ReportsScreen() {
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [votes, setVotes] = useState(0);
+  const [search, setSearch] = useState('');
+
 
   function submitReport() {
     if (title.trim() === '' || description.trim() === '') {
@@ -101,7 +104,18 @@ export default function ReportsScreen() {
                 }
                 onPress={() => toggleResolved(report.id)}
               />
+              <Button
+  title={`👍 Upvote (${votes})`}
+  onPress={() => setVotes(votes + 1)}
+/>
+
+<TextInput
+  placeholder="Search reports..."
+  value={search}
+  onChangeText={setSearch}
+/>
             </View>
+            
           ))
         )}
       </ScrollView>
