@@ -19,6 +19,9 @@ export default function ReportsScreen() {
   const [votes, setVotes] = useState(0);
   const [search, setSearch] = useState('');
 
+  const filteredReports = reports.filter((report: any) =>
+    report.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   function submitReport() {
     if (title.trim() === '' || description.trim() === '') {
@@ -29,7 +32,6 @@ export default function ReportsScreen() {
 
     addReport(title, description, date);
 
-    // Clear the form after submitting
     setTitle('');
     setDescription('');
   }
@@ -39,7 +41,6 @@ export default function ReportsScreen() {
       <ScrollView>
         <Text style={styles.title}>Report an Issue</Text>
 
-        {/* REPORT FORM */}
         <View style={styles.form}>
           <Text style={styles.label}>Issue Title</Text>
 
@@ -66,13 +67,19 @@ export default function ReportsScreen() {
           />
         </View>
 
-        {/* SUBMITTED REPORTS */}
         <Text style={styles.sectionTitle}>Submitted Reports</Text>
 
-        {reports.length === 0 ? (
-          <Text>No reports yet.</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Search reports..."
+          value={search}
+          onChangeText={setSearch}
+        />
+
+        {filteredReports.length === 0 ? (
+          <Text>No matching reports found.</Text>
         ) : (
-          reports.map((report: any) => (
+          filteredReports.map((report: any) => (
             <View
               key={report.id}
               style={[
@@ -104,18 +111,12 @@ export default function ReportsScreen() {
                 }
                 onPress={() => toggleResolved(report.id)}
               />
-              <Button
-  title={`👍 Upvote (${votes})`}
-  onPress={() => setVotes(votes + 1)}
-/>
 
-<TextInput
-  placeholder="Search reports..."
-  value={search}
-  onChangeText={setSearch}
-/>
+              <Button
+                title={`👍 Upvote (${votes})`}
+                onPress={() => setVotes(votes + 1)}
+              />
             </View>
-            
           ))
         )}
       </ScrollView>

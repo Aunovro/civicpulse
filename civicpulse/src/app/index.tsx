@@ -12,6 +12,7 @@ import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useRouter } from 'expo-router';
 
 //cd civicpulse/
+
 //npm run start 
 //press W in the terminal
 function getDevMenuHint() {
